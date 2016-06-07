@@ -2,7 +2,7 @@ package main
 
 //address structs are meant for storing the address of an individual or orginization
 type address struct {
-  streetAddress string //Normally will be the company address if institution is filled in unless the personal relationship is more important
+  streetAddress string
   town string // 
   province string
   postalCode string
