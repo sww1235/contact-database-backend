@@ -8,10 +8,30 @@ type individual struct {
   institution string //Optional, this is an orginization that the individual is affilated with such as their place of work
   family family //Optional
   
-  addresses []address 
-  phoneNumbers []string
-  emails []string
+  addresses map[string]address 
+  phoneNumbers map[string]string
+  emails map[string]string
+  
+}
+//Methods declared w/ pointers b/c some methods might need to modify the struct directly. 
+//also this can be cheaper w/ large structs
+
+func (i *individual) String() string {
   
   
+}
+
+func (i *individual) address(key string) address{
+  return i.[key]addresses
+  
+}
+
+func (i *individual) phone(key string) string{
+  return i.[key]phoneNumbers
+  
+}
+
+func (i *individual) email(key string) string{
+  return i.[key]emails
   
 }
