@@ -1,3 +1,3 @@
 # new-contact-database
 
-A contact database that solves issues with existing solutions
+A contact database backend that solves issues with existing solutions
