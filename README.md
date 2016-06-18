@@ -1,3 +1,5 @@
-# new-contact-database
+# contact-database-backend
 
-A contact database backend that solves issues with existing solutions
+A backend package that defines structs and helper functions to enable
+<www.github.com/sww1235/addressBook> contact database backend that solves issues
+with existing solutions to work.
