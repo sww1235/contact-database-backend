@@ -17,12 +17,12 @@ package contactDatabase
 
 //TODO: need to look at which attributes take a type and make them structs
 
-//VCard
+//VCard represents a vCard file in memory. All fields may not be filled
 type VCard struct {
 	Version        string
 	FormattedName  string //FN in vCard formal definition
 	Gender         string
-	Address        []address //ADR in vCard formal definition
+	Address        []Address //ADR in vCard formal definition
 	Agent          []VCard
 	Aniversary     string
 	Birthday       string //BDAY in vCard formal definition
@@ -31,10 +31,10 @@ type VCard struct {
 	Categories     []string
 	Class          string
 	ClientPIDMap   string
-	Email          []email
+	Email          []Email
 	FreeBusyURL    string
 	LatLong        string   // GEO in vCard formal definition
-	InstMess       []im     //IMPP in vCard formal definition
+	InstMess       []IM     //IMPP in vCard formal definition
 	PubKey         []string //KEY in vCard formal definition
 	Kind           string   //value to be selected from set {'application', 'individual, 'group', 'location' or 'organization'; 'x-*' values may be used for experimental purposes}
 	LanguageSpoken []string //LANG in vCard formal definition, of form fr-CA
@@ -54,9 +54,25 @@ type VCard struct {
 	Role           string
 	Sound          string
 	Source         string
-	Tel            []phone
+	Tel            []Phone
 	Title          string
 	Tz             string
 	UID            string
 	URL            string
+}
+
+//ImportFromFile takes the filepath of a vCard file and adds its data to the
+//VCard it is called on. This means that you must have an existing, ideally
+//blank VCard struct to call this function on and that there is somewhere to
+//store the data.
+func (v *VCard) ImportFromFile(filename string) {
+
+}
+
+//ExportToFile takes the filepath of a vCard file and adds its data to the
+//vCard it is called on.  This means that you must have an existing, ideally
+//blank vCard struct to call this function on and that there is somewhere to
+//store the data.
+func (v *VCard) ExportToFile() {
+
 }

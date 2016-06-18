@@ -1,25 +1,28 @@
 package contactDatabase
 
-//address structs are meant for storing the address of an individual or orginization
-type address struct {
-	streetAddress string
-	town          string
-	province      string
-	postalCode    string
-	country       string
+//Address structs are meant for storing the address of an individual or orginization
+type Address struct {
+	StreetAddress string
+	Town          string
+	Province      string
+	PostalCode    string
+	Country       string
 }
 
-type email struct {
-	category string
-	address  string
+//Email structs store the address and category of an email address
+type Email struct {
+	Category string
+	Address  string
 }
 
-type im struct {
-	category string
-	username string
+//IM structs store the username and category of an email address
+type IM struct {
+	Category string
+	Username string
 }
 
-type phone struct {
-	category string
-	number   string
+//Phone structs store the category and number of a telephone number
+type Phone struct {
+	Category string
+	Number   string
 }
