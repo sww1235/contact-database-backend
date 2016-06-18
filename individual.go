@@ -9,9 +9,9 @@ type individual struct {
 	institution string //Optional, this is an orginization that the individual is affilated with such as their place of work
 	family      family //Optional
 
-	addresses    map[string]address
-	phoneNumbers map[string]string
-	emails       map[string]string
+	addresses    []Address
+	phoneNumbers []Phone
+	emails       []Email
 }
 
 //Methods declared w/ pointers b/c some methods might need to modify the struct directly.
@@ -21,17 +21,17 @@ func (i *individual) String() string {
 	return i.name
 }
 
-func (i *individual) address(key string) address {
-	return i.addresses[key]
+func (i *individual) address(key string) Address {
+	return i.addresses
 
 }
 
 func (i *individual) phone(key string) string {
-	return i.phoneNumbers[key]
+	return i.phoneNumbers
 
 }
 
 func (i *individual) email(key string) string {
-	return i.emails[key]
+	return i.emails
 
 }
