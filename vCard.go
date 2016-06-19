@@ -1,27 +1,16 @@
 package contactDatabase
 
-// 1      | Exactly one instance per vCard MUST be present.  |
-//  |      *1     | Exactly one instance per vCard MAY be present.   |
-//  |      1*     | One or more instances per vCard MUST be present. |
-//  |      *      | One or more instances per vCard MAY be present.
-//BEGIN:vCard - needed at begining of vCard file - 1
-//END:VCARD - needed at end of vCard file - 1
-//SOURCE: uri - location for potentially more up to date information, such as
-//an ldap link or a website - *
-//KIND: string value, can be individual, group(contains memebers), org
-//(does not contain memebers), location (named geographical location), 1
-//VERSION: 4.0 for all practical purposes, but needs to be handled for import
-//purposes 1
-//ADR:
-//FN: - this is a text string for name representaion
+import (
+	"bufio"
+	"strings"
+
+	"github.com/sww1235/fileHandling"
+)
 
 //TODO: need to look at which attributes take a type and make them structs
 
 //VCard represents a vCard file in memory. All fields may not be filled
 type VCard struct {
-	Version        string
-	FormattedName  string //FN in vCard formal definition
-	Gender         string
 	Address        []Address //ADR in vCard formal definition
 	Agent          []VCard
 	Aniversary     string
@@ -32,9 +21,11 @@ type VCard struct {
 	Class          string
 	ClientPIDMap   string
 	Email          []Email
+	FormattedName  string //FN in vCard formal definition
 	FreeBusyURL    string
+	Gender         string
 	LatLong        string   // GEO in vCard formal definition
-	InstMess       []IM     //IMPP in vCard formal definition
+	InstMess       []IMPro  //IMPP in vCard formal definition
 	PubKey         []string //KEY in vCard formal definition
 	Kind           string   //value to be selected from set {'application', 'individual, 'group', 'location' or 'organization'; 'x-*' values may be used for experimental purposes}
 	LanguageSpoken []string //LANG in vCard formal definition, of form fr-CA
@@ -59,6 +50,7 @@ type VCard struct {
 	Tz             string
 	UID            string
 	URL            string
+	Version        string
 }
 
 //ImportFromFile takes the filepath of a vCard file and adds its data to the
@@ -66,7 +58,135 @@ type VCard struct {
 //blank VCard struct to call this function on and that there is somewhere to
 //store the data.
 func (v *VCard) ImportFromFile(filename string) {
+	f := fileHandling.CreateFileHandle(filename)
+	defer fileHandling.CloseFileHandle(f)
 
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, "ADR") {
+			lineparts := strings.Split(line, ";")
+			//ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
+
+		}
+		if strings.HasPrefix(line, "AGENT") {
+
+		}
+		if strings.HasPrefix(line, "ANIVERSARY") {
+
+		}
+		if strings.HasPrefix(line, "BDAY") {
+
+		}
+		if strings.HasPrefix(line, "CALADRURI") {
+
+		}
+		if strings.HasPrefix(line, "CALURI") {
+
+		}
+		if strings.HasPrefix(line, "CATEGORIES") {
+
+		}
+		if strings.HasPrefix(line, "Class") {
+
+		}
+		if strings.HasPrefix(line, "CLIENTPIDMAP") {
+
+		}
+		if strings.HasPrefix(line, "EMAIL") {
+
+		}
+		if strings.HasPrefix(line, "FN") {
+
+		}
+		if strings.HasPrefix(line, "FREEBUSYURL") {
+
+		}
+		if strings.HasPrefix(line, "GENDER") {
+
+		}
+		if strings.HasPrefix(line, "GEO") {
+
+		}
+		if strings.HasPrefix(line, "IMPP") {
+
+		}
+		if strings.HasPrefix(line, "KEY") {
+
+		}
+		if strings.HasPrefix(line, "KIND") {
+
+		}
+		if strings.HasPrefix(line, "LANG") {
+
+		}
+		if strings.HasPrefix(line, "LOGO") {
+
+		}
+		if strings.HasPrefix(line, "MAILER") {
+
+		}
+		if strings.HasPrefix(line, "MEMBER") {
+
+		}
+		if strings.HasPrefix(line, "N") {
+
+		}
+		if strings.HasPrefix(line, "NAME") {
+
+		}
+		if strings.HasPrefix(line, "NICKNAME") {
+
+		}
+		if strings.HasPrefix(line, "NOTE") {
+
+		}
+		if strings.HasPrefix(line, "ORG") {
+
+		}
+		if strings.HasPrefix(line, "PHOTO") {
+
+		}
+		if strings.HasPrefix(line, "PRODID") {
+
+		}
+		if strings.HasPrefix(line, "PROFILE") {
+
+		}
+		if strings.HasPrefix(line, "RELATED") {
+
+		}
+		if strings.HasPrefix(line, "REV") {
+
+		}
+		if strings.HasPrefix(line, "ROLE") {
+
+		}
+		if strings.HasPrefix(line, "SOUND") {
+
+		}
+		if strings.HasPrefix(line, "SOURCE") {
+
+		}
+		if strings.HasPrefix(line, "TEL") {
+
+		}
+		if strings.HasPrefix(line, "TITLE") {
+
+		}
+		if strings.HasPrefix(line, "TZ") {
+
+		}
+		if strings.HasPrefix(line, "UID") {
+
+		}
+		if strings.HasPrefix(line, "URL") {
+
+		}
+		if strings.HasPrefix(line, "VERSION") {
+
+		}
+	}
 }
 
 //ExportToFile takes the filepath of a vCard file and adds its data to the
@@ -75,4 +195,19 @@ func (v *VCard) ImportFromFile(filename string) {
 //store the data.
 func (v *VCard) ExportToFile() {
 
+}
+
+func (v VCard) String() string {
+	var s string
+	s = "VCard version: " + v.Version + "\n"
+	s += "FormattedName: " + v.FormattedName + "\n"
+	//s += "Address: " + displayStrings(v.Address) + "\n"
+	return s
+}
+
+func displayStrings(ss []string) (display string) {
+	for _, s := range ss {
+		display += s + ", "
+	}
+	return display
 }
