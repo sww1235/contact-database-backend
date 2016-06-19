@@ -7,6 +7,7 @@ type Address struct {
 	Province      string
 	PostalCode    string
 	Country       string
+	Label         string
 }
 
 //Email structs store the address and category of an email address
@@ -15,8 +16,8 @@ type Email struct {
 	Address  string
 }
 
-//IM structs store the username and category of an email address
-type IM struct {
+//IMPro structs store the username and category of an email address
+type IMPro struct {
 	Category string
 	Username string
 }
