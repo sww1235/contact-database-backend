@@ -73,37 +73,46 @@ func (v *VCard) ImportFromFile(filename string) {
 
 		}
 		if strings.HasPrefix(line, "ANIVERSARY") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Aniversary = lineparts[1]
 		}
 		if strings.HasPrefix(line, "BDAY") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Birthday = lineparts[1]
 		}
 		if strings.HasPrefix(line, "CALADRURI") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.CalAdrURI = lineparts[1]
 		}
 		if strings.HasPrefix(line, "CALURI") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.CalURI = lineparts[1]
 		}
 		if strings.HasPrefix(line, "CATEGORIES") {
 
 		}
 		if strings.HasPrefix(line, "Class") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Class = lineparts[1]
 		}
 		if strings.HasPrefix(line, "CLIENTPIDMAP") {
 
 		}
 		if strings.HasPrefix(line, "EMAIL") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Email = lineparts[1]
 		}
 		if strings.HasPrefix(line, "FN") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.FormattedName = lineparts[1]
 		}
 		if strings.HasPrefix(line, "FREEBUSYURL") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.FreeBusyURL = lineparts[1]
 		}
 		if strings.HasPrefix(line, "GENDER") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Gender = lineparts[1]
 		}
 		if strings.HasPrefix(line, "GEO") {
 
@@ -115,16 +124,19 @@ func (v *VCard) ImportFromFile(filename string) {
 
 		}
 		if strings.HasPrefix(line, "KIND") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Kind = lineparts[1]
 		}
 		if strings.HasPrefix(line, "LANG") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.LanguageSpoken = lineparts[1]
 		}
 		if strings.HasPrefix(line, "LOGO") {
 
 		}
 		if strings.HasPrefix(line, "MAILER") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Mailer = lineparts[1]
 		}
 		if strings.HasPrefix(line, "MEMBER") {
 
@@ -133,13 +145,15 @@ func (v *VCard) ImportFromFile(filename string) {
 
 		}
 		if strings.HasPrefix(line, "NAME") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.SourceName = lineparts[1]
 		}
 		if strings.HasPrefix(line, "NICKNAME") {
-
+			//implement comment separated values
 		}
 		if strings.HasPrefix(line, "NOTE") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Note = lineparts[1]
 		}
 		if strings.HasPrefix(line, "ORG") {
 
@@ -148,43 +162,52 @@ func (v *VCard) ImportFromFile(filename string) {
 
 		}
 		if strings.HasPrefix(line, "PRODID") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.ProdID = lineparts[1]
 		}
 		if strings.HasPrefix(line, "PROFILE") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Profile = lineparts[1]
 		}
 		if strings.HasPrefix(line, "RELATED") {
 
 		}
 		if strings.HasPrefix(line, "REV") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Revision = lineparts[1]
 		}
 		if strings.HasPrefix(line, "ROLE") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Role = lineparts[1]
 		}
 		if strings.HasPrefix(line, "SOUND") {
 
 		}
 		if strings.HasPrefix(line, "SOURCE") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Source = lineparts[1]
 		}
 		if strings.HasPrefix(line, "TEL") {
 
 		}
 		if strings.HasPrefix(line, "TITLE") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Title = lineparts[1]
 		}
 		if strings.HasPrefix(line, "TZ") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Tz = lineparts[1] //TODO: look at implementing a conversion function for pre 4.0 Tz's
 		}
 		if strings.HasPrefix(line, "UID") {
 
 		}
 		if strings.HasPrefix(line, "URL") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.URL = lineparts[1]
 		}
 		if strings.HasPrefix(line, "VERSION") {
-
+			lineparts := strings.SplitN(line, ":", 1)
+			v.Version = lineparts[1]
 		}
 	}
 }
