@@ -63,9 +63,9 @@ func (v *VCard) ImportFromFile(filename string) {
 
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		line := scanner.Text()
+		line := scanner.Text() //TODO: detect and implement line unfolding
 		if strings.HasPrefix(line, "ADR") {
-			lineparts := strings.Split(line, ";")
+			lineparts := strings.Split(line, ":") //split up into
 			//ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
 
 		}
