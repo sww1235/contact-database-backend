@@ -57,13 +57,22 @@ type VCard struct {
 //VCard it is called on. This means that you must have an existing, ideally
 //blank VCard struct to call this function on and that there is somewhere to
 //store the data.
-func (v *VCard) ImportFromFile(filename string) {
+func (v *VCard) ImportFromFile(filename string) { //TODO: implement detection and parsing for xml and json based formats
 	f := fileHandling.CreateFileHandle(filename)
 	defer fileHandling.CloseFileHandle(f)
-
+    var line string
+    var line2 string
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		line := scanner.Text() //TODO: detect and implement line unfolding
+		line = scanner.Text() //TODO: detect and implement line unfolding
+		line2 = scanner.Text()
+		for strings.HasPrefix(line2, " "){
+		    line = line + line2
+		    line2 = scanner.Text()
+		}
+		//line2 will have next non logical line of file stored
+		//
+		    
 		if strings.HasPrefix(line, "ADR") {
 			lineparts := strings.Split(line, ":") //split up into
 			//ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
